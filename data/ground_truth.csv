@@ -1,0 +1,21 @@
+event_id,ground_truth_label,reason
+E001,normal,Valid timestamp; baseline event
+E002,normal,Valid timestamp; baseline event
+E003,normal,Valid timestamp; baseline event
+E004,normal,Valid timestamp; plausible file activity
+E005,normal,Valid timestamp; baseline event
+E006,normal,Valid timestamp; baseline event
+E007,normal,Valid timestamp; baseline event
+E008,normal,Valid timestamp; plausible file activity
+E009,normal,Valid timestamp; baseline event
+E010,normal,Valid UTC timestamp; different timezone is legitimate
+E011,normal,Valid timestamp; baseline event
+E012,invalid_timestamp,Timestamp string is not parseable
+E013,missing_timestamp,Timestamp is blank
+E014,unknown_timezone,Timezone label is not recognized by this dataset's allowed formats
+E015,ordering_test,Synthetic pair: creation timestamp is later than access timestamp
+E016,ordering_test,Synthetic pair: access timestamp precedes creation timestamp; flag only if assumptions hold
+E017,unusual_time_test,Unusual hour alone is not evidence of wrongdoing
+E018,unusual_time_test,Unusual hour alone is not evidence of wrongdoing
+E019,duplicate_candidate,Repeated visit at same timestamp; may be legitimate or duplicate data
+E020,normal,Valid timestamp; later access is plausible

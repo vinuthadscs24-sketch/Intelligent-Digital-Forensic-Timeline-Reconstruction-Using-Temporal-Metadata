@@ -1,8 +1,21 @@
 event_id,source_type,event_description,timestamp_original,timezone,entity_key,notes
-E001,Browser,Browser opened,2026-10-25 09:02:00,+05:30,browser-1,
-E002,File,Report.docx created,2026-10-25 09:05:00,+05:30,C:/Users/User/Documents/Report.docx,
-E003,System,User login,2026-10-25 03:31:00,+00:00,user-01,
-E004,Browser,Visited example.test,2026-10-25 09:07:00,+05:30,example.test,
-E005,File,Image.jpg modified,not-a-time,+05:30,C:/Users/User/Pictures/Image.jpg,
-E006,System,USB device connected,,+05:30,USB-001,
-E007,File,Report.docx accessed,2026-10-25 09:09:00,+05:30,C:/Users/User/Documents/Report.docx,
+E001,System,User login,2026-10-25 09:00:00,+05:30,user-01,
+E002,Browser,Browser opened,2026-10-25 09:01:00,+05:30,browser-1,
+E003,File,Report.docx created,2026-10-25 09:05:00,+05:30,C:/Users/User/Documents/Report.docx,
+E004,File,Report.docx accessed,2026-10-25 09:07:00,+05:30,C:/Users/User/Documents/Report.docx,
+E005,Browser,Visited example.test,2026-10-25 09:08:00,+05:30,example.test,
+E006,System,USB device connected,2026-10-25 09:10:00,+05:30,USB-001,
+E007,File,Image.jpg created,2026-10-25 09:12:00,+05:30,C:/Users/User/Pictures/Image.jpg,
+E008,File,Image.jpg modified,2026-10-25 09:15:00,+05:30,C:/Users/User/Pictures/Image.jpg,
+E009,System,User logout,2026-10-25 09:30:00,+05:30,user-01,
+E010,Browser,Search page opened,2026-10-25 03:32:00,+00:00,browser-2,Different source timezone
+E011,File,Notes.txt created,2026-10-25 09:35:00,+05:30,C:/Users/User/Documents/Notes.txt,
+E012,File,Archive.zip modified,not-a-time,+05:30,C:/Users/User/Downloads/Archive.zip,
+E013,System,External drive connected,,+05:30,USB-002,
+E014,Browser,Visited sample.test,2026-10-25 09:40:00,UNKNOWN,sample.test,Timezone is not recognized
+E015,File,CaseFile.docx created,2026-10-25 10:00:00,+05:30,C:/Users/User/Documents/CaseFile.docx,Synthetic test record
+E016,File,CaseFile.docx accessed,2026-10-25 09:55:00,+05:30,C:/Users/User/Documents/CaseFile.docx,Synthetic test record
+E017,System,User login,2026-10-25 02:00:00,+05:30,user-02,Synthetic test record
+E018,System,User logout,2026-10-25 02:10:00,+05:30,user-02,Synthetic test record
+E019,Browser,Visited example.test,2026-10-25 09:08:00,+05:30,example.test,Synthetic repeated event
+E020,File,Report.docx accessed,2026-10-25 09:20:00,+05:30,C:/Users/User/Documents/Report.docx,
