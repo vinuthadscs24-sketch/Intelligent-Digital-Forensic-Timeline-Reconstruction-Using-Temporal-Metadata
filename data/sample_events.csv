@@ -1,0 +1,8 @@
+event_id,source_type,event_description,timestamp_original,timezone,entity_key,notes
+E001,Browser,Browser opened,2026-10-25 09:02:00,+05:30,browser-1,
+E002,File,Report.docx created,2026-10-25 09:05:00,+05:30,C:/Users/User/Documents/Report.docx,
+E003,System,User login,2026-10-25 03:31:00,+00:00,user-01,
+E004,Browser,Visited example.test,2026-10-25 09:07:00,+05:30,example.test,
+E005,File,Image.jpg modified,not-a-time,+05:30,C:/Users/User/Pictures/Image.jpg,
+E006,System,USB device connected,,+05:30,USB-001,
+E007,File,Report.docx accessed,2026-10-25 09:09:00,+05:30,C:/Users/User/Documents/Report.docx,
