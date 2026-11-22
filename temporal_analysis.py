@@ -8,11 +8,21 @@ def detect_temporal_conflicts(df):
     out["temporal_flag"] = "No conflict detected"
     out["temporal_reason"] = ""
 
+    # --------------------------------------------------
+    # 1. Detect potential ordering conflicts
+    # Only compare events with valid UTC timestamps.
+    # --------------------------------------------------
+
     valid = out[out["timestamp_utc"].notna()].copy()
 
     if "entity_key" in out.columns:
         for entity, group in valid.groupby("entity_key"):
-            descriptions = group["event_description"].fillna("").astype(str)
+
+            descriptions = (
+                group["event_description"]
+                .fillna("")
+                .astype(str)
+            )
 
             creations = group[
                 descriptions.str.contains(
@@ -36,16 +46,23 @@ def detect_temporal_conflicts(df):
             earliest_creation = creations["timestamp_utc"].min()
 
             for idx, row in accesses.iterrows():
+
                 if row["timestamp_utc"] < earliest_creation:
+
                     out.at[idx, "temporal_flag"] = (
                         "Potential ordering conflict"
                     )
+
                     out.at[idx, "temporal_reason"] = (
                         f"Access precedes the earliest recorded creation "
                         f"for entity '{entity}'. Verify source semantics."
                     )
 
-    # Exact repeated-event candidates; not proof of duplication.
+    # --------------------------------------------------
+    # 2. Detect duplicate candidates
+    # Ignore rows with missing UTC timestamps.
+    # --------------------------------------------------
+
     duplicate_columns = [
         "source_type",
         "event_description",
@@ -54,17 +71,29 @@ def detect_temporal_conflicts(df):
     ]
 
     if all(col in out.columns for col in duplicate_columns):
-        duplicate_mask = out.duplicated(
+
+        # Only consider records with known timestamps.
+        comparable = out[
+            out["timestamp_utc"].notna()
+        ]
+
+        duplicate_mask = comparable.duplicated(
             subset=duplicate_columns,
             keep=False,
         )
 
-        for idx in out.index[duplicate_mask]:
+        duplicate_indices = comparable.index[duplicate_mask]
+
+        for idx in duplicate_indices:
+
             if out.at[idx, "temporal_flag"] == "No conflict detected":
+
                 out.at[idx, "temporal_flag"] = "Duplicate candidate"
+
                 out.at[idx, "temporal_reason"] = (
                     "Matching source, description, timestamp and entity. "
                     "Check original records before concluding duplication."
                 )
 
     return out
+
